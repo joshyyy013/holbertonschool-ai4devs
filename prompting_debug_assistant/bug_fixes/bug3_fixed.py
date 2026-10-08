@@ -16,6 +16,7 @@ def print_average(student, scores):
 def main():
     print_average("Alex", [70, 80, 90])
     print_average("Sam", [])
+    print_average("Taylor", [70, 81])
 
 
 if __name__ == "__main__":

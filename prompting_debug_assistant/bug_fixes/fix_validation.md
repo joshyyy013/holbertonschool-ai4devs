@@ -64,8 +64,13 @@ introduced during the initial correction, with normal division `/`.
 **Test Command**:
     python bug3_fixed.py
 
-**Test Limitation**: The tested non-empty list has a whole-number
-average. A fractional-average test has not been confirmed.
+### Test 3: Fractional average
+
+- **Input**: Taylor, scores [70, 81].
+- **Expected Output**: Taylor's average: 75.5
+- **Actual Output**: Taylor's average: 75.5
+- **Result**: PASS.
+- **Purpose**: Confirms that normal division preserves fractional averages.
 
 ## Bug 4 – bug4_fixed.js
 
