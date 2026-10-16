@@ -1,0 +1,53 @@
+Prompt Use Cases
+Code Quality
+- Refactoring
+  - Goal: Make code easier to read and maintain without changing its behaviour.
+  - Input: A function or class, its programming language, and any constraints.
+  - Output: Refactored code and an explanation of the changes.
+- Style Enforcement
+  - Goal: Apply consistent naming, formatting, and coding conventions.
+  - Input: A code block and the project's style rules.
+  - Output: Updated code that follows the rules and a summary of corrections.
+- Performance Review
+  - Goal: Identify inefficient operations and suggest improvements.
+  - Input: Source code, expected input sizes, and any available timing results.
+  - Output: Suggested improvements, their trade-offs, and a way to measure performance.
+Debugging
+- Error Diagnosis
+  - Goal: Find the likely cause of a runtime or compilation error.
+  - Input: Relevant code, the full error message, and steps to reproduce it.
+  - Output: An explanation of the likely cause, a proposed fix, and verification steps.
+- Logic Bug Investigation
+  - Goal: Identify why code produces an incorrect result.
+  - Input: Source code, sample inputs, actual outputs, and expected outputs.
+  - Output: The faulty logic, corrected code, and an explanation using the examples.
+- Integration Troubleshooting
+  - Goal: Investigate failures between application components or external services.
+  - Input: Relevant configuration, request and response details, and logs with secrets removed.
+  - Output: Likely causes, ordered diagnostic steps, and proposed configuration or code changes.
+Documentation
+- Function Documentation
+  - Goal: Explain how to use a function correctly.
+  - Input: A function and the required documentation format, such as a docstring or Javadoc.
+  - Output: Documentation describing its purpose, parameters, return value, and errors.
+- README Creation
+  - Goal: Help developers install, run, and test a project.
+  - Input: The project structure, dependencies, setup requirements, and verified commands.
+  - Output: A README with a project overview and clear setup, usage, and testing instructions.
+- Code Explanation
+  - Goal: Help a developer understand unfamiliar code.
+  - Input: A code snippet and the reader's experience level.
+  - Output: A plain-language explanation of the code's purpose, flow, and key concepts.
+Testing
+- Unit Test Generation
+  - Goal: Check that an individual function behaves as specified.
+  - Input: The function, its expected behaviour, and the testing framework.
+  - Output: Runnable tests with assertions for normal, boundary, and invalid inputs.
+- Edge Case Identification
+  - Goal: Discover unusual inputs or conditions that existing tests may miss.
+  - Input: A feature description, validation rules, and existing test cases.
+  - Output: Additional test cases with inputs, expected results, and reasons for testing them.
+- Integration Test Design
+  - Goal: Verify that multiple components work together correctly.
+  - Input: A workflow, the components involved, and the available test environment.
+  - Output: Integration test scenarios covering setup, actions, expected results, and cleanup.
