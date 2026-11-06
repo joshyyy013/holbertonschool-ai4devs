@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: TaskFlow API
+  version: 1.0.0
+  description: 'REST API for collaborative project and task management. JSON requests/responses; UUID resource
+    IDs; UTC ISO 8601 timestamps. Trim and validate text on the server. Target p95 latency under 300 ms, 99.5%
+    uptime goal. Authentication limit: 5 requests/min/IP; authenticated API limit: 100 requests/min/user.'
+servers:
+- url: http://localhost:8000
+  description: Local development (HTTP only)
+- url: https://api.taskflow.example.com
+  description: Illustrative HTTPS deployment URL; replace before deployment
+tags:
+- name: Authentication
+- name: Users
+- name: Projects
+- name: Members
+- name: Tasks
+- name: Comments
+security:
+- bearerAuth: []
+paths:
+  /api/v1/auth/register:
+    post:
+      tags:
+      - Authentication
+      summary: Register a new user
+      operationId: register
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /api/v1/auth/login:
+    post:
+      tags:
+      - Authentication
+      summary: Authenticate and obtain a JWT
+      operationId: login
+      description: JWT access tokens should expire after 15 minutes. Auth endpoints are limited to 5 requests
+        per minute per IP.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /api/v1/users/me:
+    get:
+      tags:
+      - Users
+      summary: Get current user profile
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /api/v1/projects:
+    post:
+      tags:
+      - Projects
+      summary: Create a project
+      operationId: createProject
+      description: Authenticated creator becomes project owner.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    get:
+      tags:
+      - Projects
+      summary: List accessible projects
+      operationId: listProjects
+      parameters: &id006
+      - &id002
+        name: page
+        in: query
