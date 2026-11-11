@@ -1,0 +1,49 @@
+# Holberton assignment configuration manifest.
+# IMPORTANT: This YAML is documentation for the exercise, not a native
+# GitHub Copilot configuration file. See .github/copilot-instructions.md
+# for instructions that Copilot can actually consume.
+assistant:
+  provider: github_copilot
+  editor: visual_studio_code
+  status: planned_not_verified
+languages:
+  python:
+    style_guide: PEP 8
+    formatter: black
+    type_hints: true
+    tests: pytest
+  javascript:
+    style_guide: eslint_project_rules
+    use_const_let: true
+    semicolons: true
+    tests: project_test_runner
+  java:
+    framework: spring_boot_when_applicable
+    naming: camelCase_methods_PascalCase_classes
+    tests: junit
+  sql:
+    parameterized_queries: true
+    avoid_select_star: true
+workflows:
+  code_review:
+    enabled: true
+    focus_areas:
+      - correctness
+      - security
+      - maintainability
+      - performance
+    require_actionable_feedback: true
+  test_generation:
+    enabled: true
+    focus_areas:
+      - boundary_cases
+      - error_handling
+      - regression_tests
+  documentation:
+    enabled: true
+    output: markdown
+    include_usage_examples: true
+safety:
+  review_generated_changes: true
+  run_tests_before_commit: true
+  never_include_secrets_in_prompts: true
